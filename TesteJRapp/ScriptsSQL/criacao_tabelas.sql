@@ -22,3 +22,24 @@ CREATE TABLE purchaseorder (
    FOREIGN KEY (IdClient) REFERENCES infocliente(IdClient),
    FOREIGN KEY (IdProduct) REFERENCES product(IdProduct)
 ) COMMENT='Tabela de pedidos';
+
+ALTER TABLE `purchaseorder`
+  ADD CONSTRAINT `purchaseorder_ibfk_1` FOREIGN KEY (`IdClient`) REFERENCES `infocliente` (`IdClient`),
+  ADD CONSTRAINT `purchaseorder_ibfk_2` FOREIGN KEY (`IdProduct`) REFERENCES `product` (`IdProduct`);
+COMMIT;
+
+
+INSERT INTO `product` (`IdProduct`, `Name`, `Description`, `Price`, `RegistrationDate`) VALUES
+(5, 'Caneta Bic Azul - UN', 'Caneta azul, marca BIC, uma unidade.', '2,15', '2023-03-10 15:07:58'),
+(6, 'Lápis preto UN', 'Lápis de grafite preto.', '1,11', '2023-03-10 15:18:22'),
+(7, 'Post-IT CX', 'Post It caixa, 10 unidades, multiplas cores.  ', '15,26', '2023-03-10 15:18:22'),
+(8, 'Grampeador UN', 'Grampeador 26/6.', '21,21', '2023-03-10 15:18:22'),
+(9, 'Apontador UN', 'Unidade de Apontador, multiplas cores.', '5,00', '2023-03-10 15:32:58');
+
+
+INSERT INTO `infocliente` (`IdClient`, `Name`, `LastName`, `PhoneNumber`) VALUES
+(1, 'Jean', 'Van Dame', '(555) 012-3233'),
+(2, 'Joao', 'Gomes', '(000) 000-0000'),
+(3, 'Bruno', 'de Barros', '( 55) 996-8523'),
+(4, 'Vin', 'Diesel', '(555) 253-666'),
+(5, 'Michael', 'Jackson', '(555) 012-3456');
